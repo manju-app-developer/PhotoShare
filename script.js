@@ -1,12 +1,7 @@
 // Check if the user is logged in when the page loads
 document.addEventListener("DOMContentLoaded", function () {
-    const username = localStorage.getItem("username");
-    if (username) {
-        document.getElementById("username").textContent = `Hello, ${username}!`;
-    } else {
-        window.location.href = "login.html";
-    }
-    loadImages();
+    checkLoggedInStatus();  // Call this function to ensure proper login status check
+    loadImages();           // Load images after checking the login status
 });
 
 // Register a new user
@@ -31,7 +26,7 @@ function registerUser(event) {
             users.push({ username, password });
             localStorage.setItem("users", JSON.stringify(users));
             alert("Registration Successful! Now you can login.");
-            window.location.href = "login.html";
+            window.location.href = "login.html";  // Redirect to login page after successful registration
         }
     } else {
         alert("Please fill in all fields.");
@@ -49,7 +44,7 @@ function loginUser(event) {
 
     if (user) {
         localStorage.setItem("username", username);
-        window.location.href = "index.html";
+        window.location.href = "index.html";  // Redirect to main page after successful login
     } else {
         alert("Invalid login credentials.");
     }
@@ -58,7 +53,7 @@ function loginUser(event) {
 // Logout user
 function logout() {
     localStorage.removeItem("username");
-    window.location.href = "login.html";
+    window.location.href = "login.html";  // Redirect to login page after logout
 }
 
 // Image upload function
@@ -178,11 +173,8 @@ function likeComment(imageIndex, commentIndex) {
 function checkLoggedInStatus() {
     const username = localStorage.getItem("username");
     if (!username) {
-        window.location.href = "login.html";
+        window.location.href = "login.html";  // Redirect to login page if the user is not logged in
     } else {
         document.getElementById("username").innerText = `Welcome, ${username}!`;
     }
 }
-
-// Initialize on page load
-checkLoggedInStatus();
