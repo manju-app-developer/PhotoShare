@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Upload image functionality (from upload.html)
-function uploadImage() {
+function uploadImage(event) {
+    event.preventDefault();
+    
     let fileInput = document.getElementById('fileInput');
     let captionInput = document.getElementById('captionInput');
     let postId = Date.now(); // Unique ID for the post
@@ -57,6 +59,7 @@ function loadPosts() {
 
         let img = document.createElement('img');
         img.src = post.imgUrl;
+        img.alt = post.caption;
         postContainer.appendChild(img);
 
         let captionDiv = document.createElement('div');
@@ -64,6 +67,7 @@ function loadPosts() {
         captionDiv.textContent = post.caption;
         postContainer.appendChild(captionDiv);
 
+        // Like Button
         let likeButton = document.createElement('button');
         likeButton.classList.add('like-button');
         likeButton.textContent = "Like";
@@ -77,6 +81,7 @@ function loadPosts() {
         likeCount.textContent = `${post.likes} likes`;
         postContainer.appendChild(likeCount);
 
+        // Comment Button
         let commentButton = document.createElement('button');
         commentButton.classList.add('comment-button');
         commentButton.textContent = "Comment";
@@ -89,6 +94,15 @@ function loadPosts() {
         commentCount.classList.add('comment-count');
         commentCount.textContent = `${post.comments.length} comments`;
         postContainer.appendChild(commentCount);
+
+        // Delete Button
+        let deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function () {
+            deletePost(post.postId);
+        };
+        postContainer.appendChild(deleteButton);
 
         gallery.appendChild(postContainer);
     });
@@ -119,4 +133,12 @@ function commentPost(postId) {
             loadPosts();  // Reload posts to update comments
         }
     }
+}
+
+// Delete post functionality
+function deletePost(postId) {
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    posts = posts.filter(post => post.postId !== postId);  // Remove the post with the matching ID
+    localStorage.setItem("posts", JSON.stringify(posts));
+    loadPosts();  // Reload posts to reflect the deletion
 }
