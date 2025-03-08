@@ -5,27 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travel Share - Feed</title>
+    <title>Travel Share - Share Your Journeys</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
+        <!-- Header Section -->
         <header>
             <div class="header-content">
-                <h1>🌍 Travel Share - Feed</h1>
-                <p>Explore shared travel memories!</p>
+                <h1>🌍 Travel Share</h1>
+                <p>Share your best travel memories with the world!</p>
+                <div id="user-info">
+                    <span id="username">Welcome, User</span>
+                    <a href="upload.html" id="upload-btn">Upload Photo</a>
+                </div>
             </div>
         </header>
 
-        <section class="gallery-section">
-            <h2>Recent Travel Photos</h2>
-            <div id="gallery" class="gallery"></div>
-        </section>
+        <!-- Gallery Section -->
+        <div class="gallery-header">
+            <h2>Your Travel Photos</h2>
+            <p>Discover new places, one photo at a time.</p>
+        </div>
 
-        <footer>
-            <a href="upload.html">Upload New Photo</a>
-        </footer>
+        <div id="gallery" class="gallery-container"></div>
+
     </div>
 
     <script src="script.js"></script>
