@@ -130,10 +130,147 @@ form {
 
 .submit-btn {
     background-color: #00bcd4;
+/* Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #0097a7;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+#user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#username {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #444;
+}
+
+#back-btn {
+    background-color: #00bcd4;
     color: white;
-    padding: 12px;
+    padding: 8px 20px;
     border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#back-btn:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* Upload Section */
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 35px;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
     font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.submit-btn {
+    background-color: #00bcd4;
+    color: white;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 1.1rem;
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -142,14 +279,14 @@ form {
 
 .submit-btn:hover {
     background-color: #0097a7;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 /* Image Container for Feed */
 .gallery-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
 }
 
@@ -157,23 +294,23 @@ form {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     width: 300px;
-    height: 300px;
+    height: 350px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     transition: transform 0.3s ease;
 }
 
@@ -190,31 +327,76 @@ form {
     color: white;
     width: 100%;
     text-align: center;
-    padding: 10px;
-    font-size: 1rem;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 /* Like, Comment, Share Button Styling */
 .actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-    padding: 0 10px;
+    margin-top: 15px;
+    padding: 0 15px;
 }
 
 .action-button {
     background-color: transparent;
     border: none;
     color: #00bcd4;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .action-button:hover {
     color: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* Modal for Image View */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.modal.open {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #00bcd4;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-close:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
 }
 
 /* Responsive Design */
@@ -235,6 +417,26 @@ form {
     }
 
     .gallery-container {
-        gap: 15px;
+        gap: 20px;
+    }
+
+    .modal img {
+        max-width: 80%;
+        max-height: 70%;
     }
 }
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .gallery-container {
+        gap: 10px;
+    }
+    }
