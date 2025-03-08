@@ -1,48 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travel Share - Share Your Journeys</title>
+    <meta name="description" content="Advanced Social Media Platform">
+    <meta name="keywords" content="social media, modern, sleek, responsive">
+    <meta name="author" content="Your Name">
+    <title>Modern Social Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container">
+    <!-- Main Wrapper -->
+    <div class="app-container">
         <!-- Header Section -->
-        <header>
-            <div class="header-content">
-                <h1>🌍 Travel Share</h1>
-                <p>Share your best travel memories with the world!</p>
-                <div id="user-info">
-                    <span id="username">Welcome, User</span>
-                    <a href="upload.html" id="upload-btn">Upload Photo</a>
-                </div>
+        <header class="header">
+            <div class="logo">
+                <h1>ModernSocial</h1>
             </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
         </header>
 
-        <!-- Gallery Section -->
-        <div class="gallery-header">
-            <h2>Your Travel Photos</h2>
-            <p>Discover new places, one photo at a time.</p>
-        </div>
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="user-info">
+                    <img src="user-avatar.jpg" alt="User Avatar" class="user-avatar">
+                    <h2>John Doe</h2>
+                    <p>@johndoe</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#">Your Posts</a></li>
+                    <li><a href="#">Saved Posts</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </aside>
 
-        <!-- Gallery Container -->
-        <div id="gallery" class="gallery-container">
-            <!-- Dynamic gallery content will be injected here by script.js -->
-        </div>
-        
-        <!-- Load More Button -->
-        <div id="load-more" class="load-more-container">
-            <button onclick="loadMorePhotos()">Load More</button>
-        </div>
+            <!-- Feed Section -->
+            <section class="feed">
+                <!-- Post Form -->
+                <div class="post-form">
+                    <textarea placeholder="What's on your mind?" rows="4"></textarea>
+                    <button class="post-btn">Post</button>
+                </div>
 
+                <!-- Posts Feed -->
+                <div class="posts-feed">
+                    <!-- Post Example -->
+                    <div class="post">
+                        <div class="post-header">
+                            <img src="user-avatar.jpg" alt="User Avatar" class="post-avatar">
+                            <div class="post-user-info">
+                                <h3>John Doe</h3>
+                                <p>@johndoe</p>
+                            </div>
+                        </div>
+                        <img src="post-image.jpg" alt="Post Image" class="post-image">
+                        <div class="post-actions">
+                            <button class="like-btn">❤️ Like</button>
+                            <button class="comment-btn">💬 Comment</button>
+                            <button class="share-btn">🔗 Share</button>
+                        </div>
+                        <p class="post-caption">Just enjoying a beautiful day at the beach! 🌊☀️</p>
+                    </div>
+                    <!-- Add more posts here -->
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                <div class="trending">
+                    <h3>Trending Topics</h3>
+                    <ul>
+                        <li><a href="#">#Travel</a></li>
+                        <li><a href="#">#Technology</a></li>
+                        <li><a href="#">#Art</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 ModernSocial. All rights reserved.</p>
+        </footer>
     </div>
 
+    <!-- Scripts (Optional) -->
     <script src="script.js"></script>
 </body>
-
 </html>
