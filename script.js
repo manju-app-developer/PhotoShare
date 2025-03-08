@@ -1,31 +1,26 @@
-// Check if the page has content saved in localStorage and load it
+// Check if the page has posts saved in localStorage and load them
 document.addEventListener("DOMContentLoaded", function () {
-    loadImages();
+    loadPosts();
 });
 
-// Upload image functionality
+// Upload image functionality (from upload.html)
 function uploadImage() {
     let fileInput = document.getElementById('fileInput');
     let captionInput = document.getElementById('captionInput');
-    let gallery = document.getElementById('gallery');
+    let postId = Date.now(); // Unique ID for the post
+    let file = fileInput.files[0];
 
-    if (fileInput.files.length > 0) {
-        let file = fileInput.files[0];
+    if (file) {
         let reader = new FileReader();
-
         reader.onload = function (event) {
             let imgUrl = event.target.result;
             let caption = captionInput.value.trim() || "No caption provided"; // Default caption
 
-            // Save to local storage
-            saveImage(imgUrl, caption);
+            // Save to localStorage
+            savePost(postId, imgUrl, caption);
 
-            // Display image instantly
-            displayImage(imgUrl, caption);
-
-            // Clear input fields after upload
-            fileInput.value = "";
-            captionInput.value = "";
+            // Redirect to feed page after upload
+            window.location.href = "index.html";
         };
 
         reader.readAsDataURL(file);
@@ -34,50 +29,94 @@ function uploadImage() {
     }
 }
 
-// Save image and caption to local storage
-function saveImage(imgUrl, caption) {
-    let images = JSON.parse(localStorage.getItem("images")) || [];
-    images.push({ imgUrl, caption });
-    localStorage.setItem("images", JSON.stringify(images));
+// Save post to localStorage
+function savePost(postId, imgUrl, caption) {
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    posts.push({
+        postId,
+        imgUrl,
+        caption,
+        likes: 0,
+        comments: [],
+    });
+    localStorage.setItem("posts", JSON.stringify(posts));
 }
 
-// Display images in the gallery
-function displayImage(imgUrl, caption) {
-    let gallery = document.getElementById('gallery');
-    
-    let imgContainer = document.createElement('div');
-    imgContainer.classList.add('img-container');
-
-    let img = document.createElement('img');
-    img.src = imgUrl;
-    imgContainer.appendChild(img);
-
-    let captionDiv = document.createElement('div');
-    captionDiv.classList.add('caption');
-    captionDiv.textContent = caption;
-    imgContainer.appendChild(captionDiv);
-
-    let likeButton = document.createElement('button');
-    likeButton.classList.add('like-button');
-    likeButton.textContent = "Like";
-    likeButton.onclick = function () {
-        alert("You liked this image!");
-    };
-    imgContainer.appendChild(likeButton);
-
-    gallery.appendChild(imgContainer);
-}
-
-// Load images from local storage
-function loadImages() {
-    let images = JSON.parse(localStorage.getItem("images")) || [];
+// Load posts from localStorage and display them (on feed page)
+function loadPosts() {
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
     let gallery = document.getElementById('gallery');
 
     // Clear existing gallery content
     gallery.innerHTML = "";
 
-    // Loop through stored images and display them
-    images.forEach(image => {
-        displayImage(image.imgUrl, image.caption);
+    // Loop through posts and display them
+    posts.forEach(post => {
+        let postContainer = document.createElement('div');
+        postContainer.classList.add('img-container');
+
+        let img = document.createElement('img');
+        img.src = post.imgUrl;
+        postContainer.appendChild(img);
+
+        let captionDiv = document.createElement('div');
+        captionDiv.classList.add('caption');
+        captionDiv.textContent = post.caption;
+        postContainer.appendChild(captionDiv);
+
+        let likeButton = document.createElement('button');
+        likeButton.classList.add('like-button');
+        likeButton.textContent = "Like";
+        likeButton.onclick = function () {
+            likePost(post.postId);
+        };
+        postContainer.appendChild(likeButton);
+
+        let likeCount = document.createElement('div');
+        likeCount.classList.add('like-count');
+        likeCount.textContent = `${post.likes} likes`;
+        postContainer.appendChild(likeCount);
+
+        let commentButton = document.createElement('button');
+        commentButton.classList.add('comment-button');
+        commentButton.textContent = "Comment";
+        commentButton.onclick = function () {
+            commentPost(post.postId);
+        };
+        postContainer.appendChild(commentButton);
+
+        let commentCount = document.createElement('div');
+        commentCount.classList.add('comment-count');
+        commentCount.textContent = `${post.comments.length} comments`;
+        postContainer.appendChild(commentCount);
+
+        gallery.appendChild(postContainer);
     });
+}
+
+// Like post functionality
+function likePost(postId) {
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    let post = posts.find(post => post.postId === postId);
+
+    if (post) {
+        post.likes++;
+        localStorage.setItem("posts", JSON.stringify(posts));
+        loadPosts();  // Reload posts to update like count
+    }
+}
+
+// Comment post functionality
+function commentPost(postId) {
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    let post = posts.find(post => post.postId === postId);
+
+    if (post) {
+        let comment = prompt("Enter your comment:");
+        if (comment) {
+            post.comments.push(comment);
+            localStorage.setItem("posts", JSON.stringify(posts));
+            loadPosts();  // Reload posts to update comments
+        }
+    }
 }
