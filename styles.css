@@ -18,13 +18,14 @@ body {
 /* Container for the content */
 .container {
     width: 80%;
-    max-width: 1200px; /* Ensure the width doesn't exceed a maximum value */
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Prevent any content overflow */
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
 }
 
 /* Header */
@@ -36,18 +37,29 @@ header {
     background-color: #fff;
     border-bottom: 2px solid #f1f1f1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 header h1 {
     font-size: 30px;
     color: #333;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header h1:hover {
+    color: #007bff;
 }
 
 header .username {
     font-size: 18px;
     color: #007bff;
     font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header .username:hover {
+    color: #0056b3;
 }
 
 /* Image Upload Section */
@@ -58,6 +70,12 @@ header .username {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#upload-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 #fileInput {
@@ -70,6 +88,10 @@ header .username {
     transition: border-color 0.3s ease;
 }
 
+#fileInput:focus {
+    border-color: #007bff;
+}
+
 #upload-btn {
     padding: 12px 25px;
     background-color: #007bff;
@@ -78,11 +100,12 @@ header .username {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #upload-btn:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Gallery Section */
@@ -112,11 +135,12 @@ header .username {
     max-height: 400px;
     object-fit: cover;
     margin-bottom: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .img-container img:hover {
     transform: scale(1.05);
+    opacity: 0.9;
 }
 
 button {
@@ -128,11 +152,12 @@ button {
     cursor: pointer;
     margin: 5px 0;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Comment Section */
@@ -141,6 +166,7 @@ button:hover {
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
+    animation: fadeIn 0.5s ease-out;
 }
 
 .comment-section input {
@@ -189,6 +215,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
 }
 
 form input {
@@ -215,11 +242,12 @@ form button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 form button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -237,6 +265,16 @@ footer {
 footer p {
     font-size: 14px;
     color: #777;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Media Queries */
