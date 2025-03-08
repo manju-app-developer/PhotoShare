@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Travel Share</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Login</h1>
-            <p>Login to share your travel memories!</p>
+            <p>Login to share your travel memories with the world!</p>
         </header>
 
         <div class="form-container">
-            <input type="text" id="login-username" placeholder="Username" required>
-            <input type="password" id="login-password" placeholder="Password" required>
-            <button onclick="loginUser()">Login</button>
+            <form id="login-form">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" name="username" placeholder="Enter your username" required aria-label="Username" autocomplete="username">
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required aria-label="Password" autocomplete="current-password">
+
+                <button type="submit" onclick="loginUser(event)">Login</button>
+            </form>
+
             <p>Don't have an account? <a href="register.html">Register here</a></p>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
