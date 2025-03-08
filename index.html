@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel Share - Share Your Journeys</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Header Section -->
         <header>
-            <h1>🌍 Travel Share</h1>
-            <p>Share your best travel memories with the world!</p>
-            <div id="user-info">
-                <span id="username">Welcome, User</span> 
-                <button onclick="logout()">Logout</button>
+            <div class="header-content">
+                <h1>🌍 Travel Share</h1>
+                <p>Share your best travel memories with the world!</p>
+                <div id="user-info">
+                    <span id="username">Welcome, User</span>
+                    <button id="logout-btn" onclick="logout()">Logout</button>
+                </div>
             </div>
         </header>
 
         <!-- Image Upload Section -->
         <div class="upload-section">
-            <input type="file" id="fileInput" accept="image/*">
-            <input type="text" id="captionInput" placeholder="Enter a caption...">
-            <button onclick="uploadImage()">Upload Photo</button>
+            <h2>Upload Your Travel Memories</h2>
+            <input type="file" id="fileInput" accept="image/*" aria-label="Choose an image to upload">
+            <input type="text" id="captionInput" placeholder="Enter a caption..." aria-label="Enter image caption">
+            <button id="upload-btn" onclick="uploadImage()">Upload Photo</button>
         </div>
 
         <!-- Gallery Section -->
-        <h2>📸 Your Travel Photos</h2>
+        <h2>Your Travel Photos</h2>
         <div id="gallery"></div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
