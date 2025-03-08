@@ -16,45 +16,25 @@
             <div class="header-content">
                 <h1>🌍 Travel Share</h1>
                 <p>Share your best travel memories with the world!</p>
-                <div id="user-info">
-                    <span id="username">Welcome, User</span>
-                    <button id="logout-btn" onclick="logout()">Logout</button>
-                </div>
             </div>
         </header>
 
         <!-- Image Upload Section -->
-        <div class="upload-section">
+        <section class="upload-section">
             <h2>Upload Your Travel Memories</h2>
             <input type="file" id="fileInput" accept="image/*" aria-label="Choose an image to upload">
             <input type="text" id="captionInput" placeholder="Enter a caption..." aria-label="Enter image caption">
             <button id="upload-btn" onclick="uploadImage()">Upload Photo</button>
-        </div>
+        </section>
 
         <!-- Gallery Section -->
-        <h2>Your Travel Photos</h2>
-        <div id="gallery"></div>
+        <section class="gallery-section">
+            <h2>Your Travel Photos</h2>
+            <div id="gallery" class="gallery"></div>
+        </section>
     </div>
 
     <script src="script.js"></script>
-
-    <script>
-        // Call this function to handle login/logout actions on page load
-        function checkLoggedInStatus() {
-            const username = localStorage.getItem("username");
-            if (!username) {
-                window.location.href = "login.html";
-            } else {
-                document.getElementById("username").innerText = `Welcome, ${username}!`;
-            }
-        }
-
-        // Call the function to check login status when page loads
-        document.addEventListener("DOMContentLoaded", function() {
-            checkLoggedInStatus();
-            loadImages(); // Load images after the page loads
-        });
-    </script>
 </body>
 
 </html>
