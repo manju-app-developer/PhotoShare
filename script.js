@@ -10,11 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Register a new user
-function registerUser() {
+function registerUser(event) {
+    event.preventDefault();  // Prevent form submission
     let username = document.getElementById("reg-username").value;
     let password = document.getElementById("reg-password").value;
+    let confirmPassword = document.getElementById("reg-password-confirm").value;
 
-    if (username && password) {
+    if (username && password && confirmPassword) {
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
         let users = JSON.parse(localStorage.getItem("users")) || [];
         // Check if username already exists
         let userExists = users.some(u => u.username === username);
@@ -32,7 +39,8 @@ function registerUser() {
 }
 
 // Login user
-function loginUser() {
+function loginUser(event) {
+    event.preventDefault();  // Prevent form submission
     let username = document.getElementById("login-username").value;
     let password = document.getElementById("login-password").value;
 
@@ -177,4 +185,4 @@ function checkLoggedInStatus() {
 }
 
 // Initialize on page load
-checkLoggedInStatus(); to
+checkLoggedInStatus();
