@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Share</title>
+    <title>Travel Share - Share Your Journeys</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>🌍 Travel Share</h1>
-        <p>Upload and share your travel moments!</p>
-        
-        <input type="file" id="fileInput" accept="image/*">
-        <button onclick="uploadImage()">Upload</button>
+        <header>
+            <h1>🌍 Travel Share</h1>
+            <p>Share your best travel memories with the world!</p>
+        </header>
 
-        <h2>Uploaded Photos</h2>
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept="image/*">
+            <button onclick="uploadImage()">Upload Photo</button>
+        </div>
+
+        <h2>📸 Your Travel Photos</h2>
         <div id="gallery"></div>
     </div>
 
-    <!-- Firebase SDK -->
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
