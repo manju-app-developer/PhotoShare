@@ -14,10 +14,10 @@ function uploadImage() {
             // Save to local storage
             saveImage(imgUrl);
 
-            // Display image
+            // Display image instantly
             let img = document.createElement('img');
             img.src = imgUrl;
-            gallery.appendChild(img);
+            gallery.prepend(img);  // New images appear first
         };
 
         reader.readAsDataURL(file);
@@ -29,11 +29,11 @@ function uploadImage() {
 // Save image URLs to local storage
 function saveImage(imgUrl) {
     let images = JSON.parse(localStorage.getItem("images")) || [];
-    images.push(imgUrl);
+    images.unshift(imgUrl);  // Add new images to the front
     localStorage.setItem("images", JSON.stringify(images));
 }
 
-// Load images from local storage
+// Load images from local storage on page load
 function loadImages() {
     let gallery = document.getElementById('gallery');
     let images = JSON.parse(localStorage.getItem("images")) || [];
