@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", loadImages);
+document.addEventListener("DOMContentLoaded", function () {
+    loadImages();
+});
 
 function uploadImage() {
     let fileInput = document.getElementById('fileInput');
@@ -38,6 +40,12 @@ function loadImages() {
     let gallery = document.getElementById('gallery');
     let images = JSON.parse(localStorage.getItem("images")) || [];
 
+    if (images.length === 0) {
+        gallery.innerHTML = "<p>No images uploaded yet.</p>";
+        return;
+    }
+
+    gallery.innerHTML = ""; // Clear previous content
     images.forEach((imgUrl) => {
         let img = document.createElement('img');
         img.src = imgUrl;
