@@ -5,33 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travel Share - Share Your Journeys</title>
+    <title>Travel Share - Feed</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
-        <!-- Header Section -->
         <header>
             <div class="header-content">
-                <h1>🌍 Travel Share</h1>
-                <p>Share your best travel memories with the world!</p>
+                <h1>🌍 Travel Share - Feed</h1>
+                <p>Explore shared travel memories!</p>
             </div>
         </header>
 
-        <!-- Image Upload Section -->
-        <section class="upload-section">
-            <h2>Upload Your Travel Memories</h2>
-            <input type="file" id="fileInput" accept="image/*" aria-label="Choose an image to upload">
-            <input type="text" id="captionInput" placeholder="Enter a caption..." aria-label="Enter image caption">
-            <button id="upload-btn" onclick="uploadImage()">Upload Photo</button>
-        </section>
-
-        <!-- Gallery Section -->
         <section class="gallery-section">
-            <h2>Your Travel Photos</h2>
+            <h2>Recent Travel Photos</h2>
             <div id="gallery" class="gallery"></div>
         </section>
+
+        <footer>
+            <a href="upload.html">Upload New Photo</a>
+        </footer>
     </div>
 
     <script src="script.js"></script>
