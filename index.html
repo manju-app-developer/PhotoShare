@@ -8,20 +8,24 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header Section -->
         <header>
             <h1>🌍 Travel Share</h1>
             <p>Share your best travel memories with the world!</p>
             <div id="user-info">
-                <span id="username"></span>
+                <span id="username">Welcome, User</span> 
                 <button onclick="logout()">Logout</button>
             </div>
         </header>
 
+        <!-- Image Upload Section -->
         <div class="upload-section">
             <input type="file" id="fileInput" accept="image/*">
+            <input type="text" id="captionInput" placeholder="Enter a caption...">
             <button onclick="uploadImage()">Upload Photo</button>
         </div>
 
+        <!-- Gallery Section -->
         <h2>📸 Your Travel Photos</h2>
         <div id="gallery"></div>
     </div>
