@@ -109,9 +109,13 @@ function loadImages() {
         imgContainer.appendChild(likeButton);
 
         let commentSection = document.createElement('div');
-        image.comments.forEach(comment => {
+        image.comments.forEach((comment, commentIndex) => {
             let commentElement = document.createElement('p');
-            commentElement.textContent = comment;
+            commentElement.textContent = comment.text;
+            let likeCommentButton = document.createElement('button');
+            likeCommentButton.textContent = `Like (${comment.likes || 0})`;
+            likeCommentButton.onclick = () => likeComment(index, commentIndex);
+            commentElement.appendChild(likeCommentButton);
             commentSection.appendChild(commentElement);
         });
 
@@ -147,7 +151,7 @@ function postComment(index, commentText) {
     }
 
     let images = JSON.parse(localStorage.getItem("images")) || [];
-    images[index].comments.push(commentText);
+    images[index].comments.push({ text: commentText, likes: 0 });
     localStorage.setItem("images", JSON.stringify(images));
 
     loadImages(); // Reload images to display new comments
@@ -173,4 +177,4 @@ function checkLoggedInStatus() {
 }
 
 // Initialize on page load
-checkLoggedInStatus();
+checkLoggedInStatus(); to
