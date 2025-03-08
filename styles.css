@@ -17,20 +17,18 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Header */
 header h1 {
     font-size: 30px;
     margin-bottom: 5px;
 }
 
-/* Upload Section */
-.upload-section {
-    margin: 20px 0;
-}
-
-input[type="file"] {
+/* Form Container */
+.form-container input {
+    width: 80%;
     padding: 10px;
-    margin-right: 10px;
+    margin: 10px 0;
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
 
 button {
@@ -46,7 +44,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Image Gallery */
+/* Gallery */
 #gallery {
     margin-top: 20px;
     display: flex;
@@ -56,8 +54,8 @@ button:hover {
 }
 
 img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
